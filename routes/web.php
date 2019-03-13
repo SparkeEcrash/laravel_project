@@ -12,5 +12,40 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+		return view('welcome');
 });
+
+Route::get('/new', [
+	'uses' => 'PagesController@new'
+]);
+
+Route::get('/todos', [
+	'uses' => 'TodosController@index',
+	'as' => 'todos'
+]);
+
+Route::post('/create/todo',[
+	'uses'=> 'TodosController@store'
+]);
+
+Route::get('/todo/delete/{id}', [
+	'uses' => 'TodosController@delete',
+	'as' => 'todo.delete'
+]);
+
+Route::get('/todo/update/{id}', [
+	'uses' => 'TodosController@update',
+	'as' => 'todo.update'
+]);
+
+Route::post('/todo/save/{id}', [
+	'uses' => 'TodosController@save',
+	'as' => 'todos.save'
+	// <form action="{{route('todos.save', ['id' => $todo->id])}}" 
+	// as => **** portion is coming form the route('****') in the form
+]);
+
+Route::get('/todos/completed/{id}', [
+	'uses' => 'TodosController@completed',
+	'as' => 'todos.completed'
+]);

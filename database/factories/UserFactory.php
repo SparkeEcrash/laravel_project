@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Todo;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -24,3 +25,10 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(Todo::class, function(Faker $faker){
+	return [
+		'todo' => $faker->sentence(10)
+	];
+});
+
